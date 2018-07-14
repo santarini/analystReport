@@ -1,18 +1,17 @@
 Sub reportStyle()
+
+'single space
+    Selection.WholeStory
+    Selection.Style = ActiveDocument.Styles("No Spacing")
+
+'marigns
     With ActiveDocument.PageSetup
         .TopMargin = InchesToPoints(0)
         .BottomMargin = InchesToPoints(0)
         .LeftMargin = InchesToPoints(0)
         .RightMargin = InchesToPoints(0)
     End With
-    With Selection.ParagraphFormat
-        .LeftIndent = InchesToPoints(1)
-        .SpaceBeforeAuto = False
-        .SpaceAfterAuto = False
-    End With
-'single space
-    Selection.WholeStory
-    Selection.Style = ActiveDocument.Styles("No Spacing")
+    
 'define Heading 1
     With ActiveDocument.Styles("Heading 1").Font
         .Name = "+Headings"
@@ -42,4 +41,12 @@ Sub reportStyle()
         .StylisticSet = wdStylisticSetDefault
         .ContextualAlternates = 0
     End With
+    
+'indent content
+    With Selection.ParagraphFormat
+        .LeftIndent = InchesToPoints(1)
+        .SpaceBeforeAuto = False
+        .SpaceAfterAuto = False
+    End With
+    
 End Sub
